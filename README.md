@@ -6,19 +6,24 @@ terraform init
 terraform apply
 ```
 
-If you would like to perform the update manually, you need to deploy an ESXi 6.5 server and run the following commands through SSH in the server once it has been deployed:
+If you would like to perform the update manually, you need to deploy an ESXi 6.5 server and run the following commands through an SSH session in the server once it has been deployed.
 
-```sh
-# Determine the latest ESXi update here:
-# https://esxi-patches.v-front.de/ESXi-6.7.0.html
+First make sure that SSH and Shell are enabled, they should be enabled by default on Packet but if not, run the following:
 
-# SSH and Shell are enabled by default on Packet ESXi servers
+```
+vim-cmd hostsvc/enable_ssh
+vim-cmd hostsvc/start_ssh
+```
 
-# Swap must be enabled on the datastore. Otherwise, the upgrade may fail with a "no space left" error.
+Swap must be enabled on the datastore. Otherwise, the upgrade may fail with a "no space left" error.
+```
 esxcli sched swap system set --datastore-enabled true
 esxcli sched swap system set --datastore-name datastore1
+```
 
-# Update to your specified version of ESXi
+Prepare the server for the update and run the update. You can get the latest VMWare ESXi update versions [here](https://esxi-patches.v-front.de/ESXi-6.7.0.html).
+
+```
 vim-cmd /hostsvc/maintenance_mode_enter
 
 esxcli network firewall ruleset set -e true -r httpClient
