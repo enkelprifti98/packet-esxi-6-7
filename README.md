@@ -1,4 +1,4 @@
-# Deploy ESXi 6.7 on Packet Bare Metal Servers
+# Deploy VMWare ESXi 6.7 on Packet Bare Metal Servers
 This Terraform script lets you deploy ESXi 6.7 on Packet servers. As of now, only ESXi 6.5 is officially supported on Packet. This script deploys ESXi 6.5 and then runs a shell script that updates the server to ESXi 6.7. To run the script, git clone this repo, install Terraform and run the following in the script directory:
 
 ```
