@@ -28,8 +28,8 @@ vim-cmd /hostsvc/maintenance_mode_enter
 
 esxcli network firewall ruleset set -e true -r httpClient
 
-# The variable esxi_update_filename can be retrieved from the website above
-esxcli software profile update -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml -p ${esxi_update_filename}
+# The update version can be retrieved from the website above
+esxcli software profile update -d https://hostupdate.vmware.com/software/VUM/PRODUCTION/main/vmw-depot-index.xml -p ESXi-6.7.0-20191204001-standard
 
 esxcli network firewall ruleset set -e false -r httpClient
 
