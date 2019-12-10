@@ -1,5 +1,5 @@
-# Deploy VMWare ESXi 6.7 on Packet Bare Metal Servers
-This Terraform script lets you deploy VMWare ESXi 6.7 on Packet servers. As of now, only VMWare ESXi 6.5 is officially supported on Packet. This script deploys multiple servers with VMWare ESXi 6.5 and then runs a shell script that updates the servers to VMWare ESXi 6.7. To run the script, git clone this repo, install Terraform and configure the `variables.tf` file with your Packet Project ID, amount of servers, ESXi update version etc. Then run the following commands in the script directory:
+# Deploy VMware ESXi 6.7 on Packet Bare Metal Servers
+This Terraform script lets you deploy VMware ESXi 6.7 on Packet servers. As of now, only VMware ESXi 6.5 is officially supported on Packet. This script deploys multiple servers with VMware ESXi 6.5 and then runs a shell script that updates the servers to VMware ESXi 6.7. To run the script, git clone this repo, install Terraform and configure the `variables.tf` file with your Packet Project ID, amount of servers, ESXi update version etc. Then run the following commands in the script directory:
 
 ```
 terraform init
@@ -21,7 +21,7 @@ esxcli sched swap system set --datastore-enabled true
 esxcli sched swap system set --datastore-name datastore1
 ```
 
-Prepare the server for the update and run the update. You can get the latest VMWare ESXi update versions [here](https://esxi-patches.v-front.de/ESXi-6.7.0.html).
+Prepare the server for the update and run the update. You can get the latest VMware ESXi update versions [here](https://esxi-patches.v-front.de/ESXi-6.7.0.html).
 
 ```
 vim-cmd /hostsvc/maintenance_mode_enter
@@ -38,4 +38,4 @@ vim-cmd /hostsvc/maintenance_mode_exit
 reboot
 ```
 
-Once the update has completed, the server should now be running VMWare ESXi 6.7!
+Once the update has completed, the server should now be running VMware ESXi 6.7!
