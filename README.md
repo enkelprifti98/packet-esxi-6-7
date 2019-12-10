@@ -37,3 +37,5 @@ vim-cmd /hostsvc/maintenance_mode_exit
 
 reboot
 ```
+
+Once the update has completed, the server should now be running VMWare ESXi 6.7!
