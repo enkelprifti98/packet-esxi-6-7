@@ -7,7 +7,7 @@ resource "packet_reserved_ip_block" "reserved_ip_blocks" {
   count      = var.amount
   project_id = var.project_id
   facility   = var.facility
-  quantity   = var.public_ipv4_subnet_size
+  quantity   = var.public_ipv4_subnet_size.quantity
 }
 
 # Provisioning Packet servers
@@ -22,7 +22,7 @@ resource "packet_device" "servers" {
   tags             = ["${var.esxi_update_filename}"]
   ip_address {
     type            = "public_ipv4"
-    cidr            = var.subnet_CIDR
+    cidr            = var.public_ipv4_subnet_size.cidr
     reservation_ids = [element(packet_reserved_ip_block.reserved_ip_blocks.*.id, count.index)]
   }
   ip_address {
