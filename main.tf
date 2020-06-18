@@ -2,6 +2,14 @@ provider "packet" {
   auth_token = "${var.auth_token}"
 }
 
+# Requesting reserved subnets if user wants a custom subnet size (IP Allocation)
+resource "packet_reserved_ip_block" "reserved_ip_blocks" {
+  count      = var.amount
+  project_id = var.project_id
+  facility   = var.facility
+  quantity   = var.public_ipv4_subnet_size
+}
+
 # Provisioning Packet servers
 resource "packet_device" "servers" {
   count            = "${var.amount}"
