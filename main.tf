@@ -20,6 +20,17 @@ resource "packet_device" "servers" {
   billing_cycle    = "hourly"
   project_id       = "${var.project_id}"
   tags             = ["${var.esxi_update_filename}"]
+  ip_address {
+    type            = "public_ipv4"
+    cidr            = var.subnet_CIDR
+    reservation_ids = [element(packet_reserved_ip_block.reserved_ip_blocks.*.id, count.index)]
+  }
+  ip_address {
+    type = "private_ipv4"
+  }
+  ip_address {
+    type = "public_ipv6"
+  }
 }
 
 # Waiting for the post provision reboot process to complete
