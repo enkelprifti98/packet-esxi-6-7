@@ -34,7 +34,12 @@ variable "esxi_update_filename" {
 }
 
 variable "public_ipv4_subnet_size" {
-  description = "Public IPv4 management subnet size, size should be set as the total amount of IPs in the subnet. Ex: For /28 subnet, amount = 16. /29 is default for ESXi on Packet."
-  default = 8
+  description = "Public IPv4 management subnet size, cidr and quanity should match, quantity should be set as the total amount of IPs in the subnet. Ex: For /28 subnet, amount = 16. /29 is default for ESXi on Packet."
+  default = [
+    {
+      "quantity" : 8,
+      "cidr" : 29
+    }
+  ]
 }
 
